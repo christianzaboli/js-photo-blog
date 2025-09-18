@@ -45,6 +45,8 @@ header h1 {
     font-family: 'Edu Tas Beginner', sans-serif;
     position: relative;
     box-shadow: 1px 1px 3px 0px #000000b0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 .polaroid-pin {
     background-image: url(../img/pin.svg);
@@ -66,6 +68,17 @@ header h1 {
     font-size: 1.25rem;
 }
 .polaroid-contain figcaption {
-    
     max-width: 300px;
+}
+
+
+
+/* *********** ANIMAZIONE POLAROID *********** */
+.polaroid-contain:hover {
+    transform: rotate(10deg) scale(1.2);
+    box-shadow: 6px 6px 20px #000000b0;
+    z-index: 10;
+}
+.polaroid-contain:hover .polaroid-pin{
+    display: none;
 }
