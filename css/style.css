@@ -103,7 +103,7 @@ header h1 {
     font-size: 1.25rem;
     padding: 0.5em;
 }
-.selected-pic{
+#selected-pic{
     /* debug */
     width: 600px;
     height: 600px;

@@ -1,37 +1,46 @@
-picApi = 'https://lanciweb.github.io/demo/api/pictures/';
+const picApi = 'https://lanciweb.github.io/demo/api/pictures/';
 const htmlBody = document.querySelector('.container');
-const returnButton = document.querySelector('button');
-const closeButton = document.querySelector('.picture-focus')
-
-console.log(returnButton);
-console.log(htmlBody);
+const fullPic = document.querySelector('.picture-focus');
+const overlayPic = document.getElementById('overlay')
 
 let accumuloPics = '';
-
 axios.get(picApi)
 .then(pics => {
     const pic = pics.data;
+    console.log(pic);
+    
     pic.forEach(element => {
         accumuloPics += ` 
-        <figure class="polaroid-contain" id='card'>
+        <figure class="polaroid-contain" id='${element.id}'>
         <div class="polaroid-pin"></div>
-        <img src="${element.url}" alt="${element.title}" class="polaroid-pic" id="${element.id}">
-        <figcaption id="card"><span class="polaroid-date">${element.date}</span><br>
+        <img src="${element.url}" alt="${element.title}" class="polaroid-pic">
+        <figcaption><span class="polaroid-date">${element.date}</span><br>
         ${element.title}</figcaption>
-        </figure>`
+        </figure>`;
     });
-    htmlBody.innerHTML = accumuloPics
+    htmlBody.innerHTML = accumuloPics;
+    
+    const figures = document.querySelectorAll('figure');
+    console.log(figures);
+    figures.forEach(element => {
+        element.addEventListener('click', () => {
+            fullPic.classList.toggle('display-none');
+            fullPic.innerHTML = `
+                <button>Chiudi</button>
+                <img src="${element.childNodes[3].currentSrc}" alt="600x600" id="selected-pic">`;
+            console.log(element);
+            
+            const returnButton = document.querySelector('button');
+            returnButton.addEventListener('click', () => {
+                fullPic.classList.toggle('display-none');
+            });
+        })
+    });
 })
 .catch(error => {
     console.error(error)
 });
 
-const card = document.getElementsByTagName('figure')
-console.log(card);
 
-
-returnButton.addEventListener('click', () => {
-    closeButton.classList.toggle('display-none')
-})
 
 
