@@ -30,16 +30,21 @@ header h1 {
 .container {
     width: 80%;
     margin: 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    flex-direction: row;
 }
 
     /* *********** POLAROID ***********  */
 .polaroid-contain {
     background-color: white;
-    width: 350px;
     height: 475px;
     padding: 20px;
     font-family: 'Edu Tas Beginner', sans-serif;
     position: relative;
+    box-shadow: 1px 1px 3px 0px #000000b0;
 }
 .polaroid-pin {
     background-image: url(../img/pin.svg);
@@ -51,11 +56,16 @@ header h1 {
     transform: translate(-50%,-50%)
 }
 .polaroid-pic {
-    height: 350px;
+    width: 300px;
+    height: 300px;
     margin-bottom: 15px;
     background-color: #92C952; /* DEBUG COLOR */
 }
-.polaroid-title {
+.polaroid-date {
     font-family:'Sometype Mono', 'monospace';
     font-size: 1.25rem;
+}
+.polaroid-contain figcaption {
+    
+    max-width: 300px;
 }
