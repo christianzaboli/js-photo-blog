@@ -1,7 +1,6 @@
 const picApi = 'https://lanciweb.github.io/demo/api/pictures/';
 const htmlBody = document.querySelector('.container');
 const fullPic = document.querySelector('.picture-focus');
-const overlayPic = document.getElementById('overlay')
 
 // accumulo polaroids main section
 let accumuloPics = '';
@@ -28,11 +27,12 @@ axios.get(picApi)
 
     // click on polaroids -> full schermo
     figures.forEach(element => {
+        const img = element.querySelector('img')
         element.addEventListener('click', () => {
             fullPic.classList.toggle('display-none');
             fullPic.innerHTML = `
                 <button>Chiudi</button>
-                <img src="${element.childNodes[3].currentSrc}" alt="600x600" id="selected-pic">`;
+                <img src="${img.src}" alt="${img.title}" id="selected-pic">`;
             console.log(element);
             
             // function per il bottone di ritorno da fullscreen

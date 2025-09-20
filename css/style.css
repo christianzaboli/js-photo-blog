@@ -128,9 +128,6 @@ header h1 {
     }
 }
 @media (max-width: 450px) {
-    .polaroid-contain {
-
-    }
     .polaroid-pic {
         width: 250px;
         margin-bottom: 15px;
